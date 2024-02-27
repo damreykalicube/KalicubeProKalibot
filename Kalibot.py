@@ -8,6 +8,19 @@ from datetime import datetime
 import pytz
 import os
 from github import Github
+import time
+
+def response_generator():
+    response = random.choice(
+        [
+            "Hello! I'm Kalibot from Kalicube, a chat assistant bot. How may I assist you with your questions today? Let's make this conversation groovy and insightful!",
+            "Hello! I'm Kalibot from Kalicube, a chat assistant bot. Speaking of which, how may I help you today?",
+            "Hi! I'm Kalibot, how can I assist you today? If you have any questions or need information, feel free to ask.",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
 
 st.set_page_config(page_title="Kalibot", page_icon="🤖")
 
@@ -109,6 +122,8 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
+        greetingsresponse = st.write_stream(response_generator())
+        
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             frequency_penalty = 1,
@@ -126,4 +141,6 @@ if prompt := st.chat_input("What is up?"):
         totalToken += num_tokens_from_string(full_response)
         message_placeholder.markdown(full_response)
         update_json_file(git_tok, current_id_tail, prompt, full_response, totalToken)
+    st.session_state.messages.append({"role": "assistant", "content": response})    
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+    
