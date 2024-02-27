@@ -110,9 +110,6 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-        
-greetingsresponse = st.write_stream(response_generator())
-st.session_state.messages.append({"role": "assistant", "content": greetingsresponse})   
 
 if prompt := st.chat_input("What is up?"):
     current_id_tail = init_json_file(git_tok)
