@@ -9,9 +9,9 @@ import pytz
 import os
 from github import Github
 
-st.set_page_config(page_title="Kalibot Version 2", page_icon="🤖")
+st.set_page_config(page_title="Kalibot", page_icon="🤖")
 
-st.title("Kalibot Version 2")
+st.title("Kalibot - Kalicube Pro Version")
 git_tok = Github(os.environ["github_key"])
 openai.api_key = os.environ["openai_secret_key"]
 pinecone.init(
@@ -27,13 +27,11 @@ each question. If the information was mentioned by a person, include that person
 Provide as much details as possible. 
 If giving out name of members, include their job title and description.
 Enumerate process if necessary.
-If it is a request from the user, follow it as much as you can. Examples can be expounding a certain statement, rewrting a particular phrase, a script writer for copywriting team.
-If the information can not be found in the information
-provided by the user you truthfully say "I'm sorry I don't know the answer to that".
-Answer the questions or requests in an Active voice.
+If the information can not be found in the information provided by the user you truthfully say "I'm sorry I don't know the answer to that".
+Answer all questions in an Active voice.
 If you are ask about your name, your answer should be "I'm kalibot from Kalicube. I am a chat assistant bot. Speaking of which, how may I help you today?".
 When answering or doing a task use the following words if you can: groovy, delightful, insightful, fantastic, wonderfully, jolly, amazing, stunning, incredible, great, definitely, awesome, brilliant, indeed, cheeky, geeky, nuggety, boatloads
-When doing rewriting tasks, avoid using words that are unusual; make it simple as possible, you can still reuse some of the sentences you were going to rewrite.
+When you are asked to do a task aside from answering a question, you should say "As much as I want to do that, I am only limited to answering your questions."
 """
 
 def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
