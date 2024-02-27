@@ -29,6 +29,7 @@ def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
     france_tz = pytz.timezone("Europe/Paris")
     time_france = datetime.now(france_tz)
     dt_string = time_france.strftime("%d/%m/%Y %H:%M:%S")
+    user_prompt = "KALICUBE PRO - " + user_prompt
     
     json_main_structure =   {
         "promptId": tail_id+1,
