@@ -11,14 +11,14 @@ from github import Github
 import time
 
 def response_generator():
-    response = random.choice(
+    greetingsresponse = random.choice(
         [
             "Hello! I'm Kalibot from Kalicube, a chat assistant bot. How may I assist you with your questions today? Let's make this conversation groovy and insightful!",
             "Hello! I'm Kalibot from Kalicube, a chat assistant bot. Speaking of which, how may I help you today?",
             "Hi! I'm Kalibot, how can I assist you today? If you have any questions or need information, feel free to ask.",
         ]
     )
-    for word in response.split():
+    for word in greetingsresponse.split():
         yield word + " "
         time.sleep(0.05)
 
