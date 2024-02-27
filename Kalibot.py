@@ -12,7 +12,7 @@ from github import Github
 st.set_page_config(page_title="Kalibot", page_icon="🤖")
 
 st.title("Kalibot - Kalicube Pro Version")
-git_tok = Github(st.secrets["github_key2"])
+git_tok = Github(st.secrets["github_key"])
 openai.api_key = st.secrets["openai_secret_key"]
 pinecone.init(
     api_key= st.secrets["pinecone_secret_key"],  # app.pinecone.io (console)
@@ -22,7 +22,7 @@ index_name = 'kalicube-test'
 index = pinecone.Index(index_name)
 
 primer = os.environ["primer_content"]
-print(os.environ["primer_content"])
+#print(os.environ["primer_content"])
 
 def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
     
