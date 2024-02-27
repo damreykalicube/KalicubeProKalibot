@@ -100,6 +100,7 @@ def process_vector_query(prompt, index):
 
     return augmented_query
 
+
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4-1106-preview"
 
@@ -109,6 +110,9 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        
+greetingsresponse = st.write_stream(response_generator())
+st.session_state.messages.append({"role": "assistant", "content": greetingsresponse})   
 
 if prompt := st.chat_input("What is up?"):
     current_id_tail = init_json_file(git_tok)
@@ -122,7 +126,6 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        greetingsresponse = st.write_stream(response_generator())
         
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
@@ -141,6 +144,6 @@ if prompt := st.chat_input("What is up?"):
         totalToken += num_tokens_from_string(full_response)
         message_placeholder.markdown(full_response)
         update_json_file(git_tok, current_id_tail, prompt, full_response, totalToken)
-    st.session_state.messages.append({"role": "assistant", "content": response})    
+     
     st.session_state.messages.append({"role": "assistant", "content": full_response})
     
