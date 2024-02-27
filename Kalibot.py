@@ -12,10 +12,10 @@ from github import Github
 st.set_page_config(page_title="Kalibot", page_icon="🤖")
 
 st.title("Kalibot - Kalicube Pro Version")
-#git_tok = Github(os.environ["github_key2"])
-openai.api_key = os.environ["openai_secret_key"]
+git_tok = Github(st.secrets["github_key2"])
+openai.api_key = st.secrets["openai_secret_key"]
 pinecone.init(
-    api_key= os.environ["pinecone_secret_key"],  # app.pinecone.io (console)
+    api_key= st.secrets["pinecone_secret_key"],  # app.pinecone.io (console)
     environment="gcp-starter"  # next to API key in console
 )
 index_name = 'kalicube-test'
