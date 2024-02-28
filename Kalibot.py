@@ -26,7 +26,7 @@ primer = os.environ["primer_content"]
 #print(os.environ["primer_content"])
 
 def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
-    user_prompt = "KALICUBE PRO" + user_prompt 
+    user_prompt = "KALICUBE PRO - " + user_prompt 
     france_tz = pytz.timezone("Europe/Paris")
     time_france = datetime.now(france_tz)
     dt_string = time_france.strftime("%d/%m/%Y %H:%M:%S")
