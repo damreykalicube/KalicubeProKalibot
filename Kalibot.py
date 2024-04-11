@@ -17,9 +17,9 @@ git_tok = Github(st.secrets["github_key"])
 openai.api_key = st.secrets["openai_secret_key"]
 pinecone.init(
     api_key= st.secrets["pinecone_secret_key"],  # app.pinecone.io (console)
-    environment="gcp-starter"  # next to API key in console
+    environment="us-central1-gcp"  # next to API key in console
 )
-index_name = 'kalicube-test'
+index_name = 'kalicube-preprod'
 index = pinecone.Index(index_name)
 
 primer = os.environ["primer_content"]
