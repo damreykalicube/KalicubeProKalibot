@@ -4,3 +4,6 @@ pinecone-client==2.2.4
 tiktoken
 PyGithub
 clipboard
+langchain-community
+google.generativeai
+anthropic
