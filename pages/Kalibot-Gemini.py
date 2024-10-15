@@ -40,7 +40,7 @@ def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
     json_main_structure =   {
         "promptId": tail_id+1,
         "promptDateTime": dt_string,
-        "prompt": f"GEMINI-{user_prompt}",
+        "prompt": f"KALICUBEPRO:GEMINI-{user_prompt}",
         "promptAnswer": bot_answer,
         "totalTokenUsage": token_usage
     }
