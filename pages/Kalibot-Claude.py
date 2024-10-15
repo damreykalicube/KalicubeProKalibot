@@ -45,7 +45,7 @@ def update_json_file(git_tok, tail_id, user_prompt, bot_answer, token_usage):
     json_main_structure =   {
         "promptId": tail_id+1,
         "promptDateTime": dt_string,
-        "prompt": 'CLAUDE-'+user_prompt,
+        "prompt": 'KALICUBEPRO:CLAUDE-'+user_prompt,
         "promptAnswer": bot_answer,
         "totalTokenUsage": token_usage
     }
